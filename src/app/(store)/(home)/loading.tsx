@@ -1,7 +1,14 @@
+import Skeleton from '@/components/skeleton'
 import React from 'react'
 
 const HomeLoading = () => {
-  return <p>Carregando Home...</p>
+  return (
+    <div className="grid h-full grid-cols-9 grid-rows gap-6">
+      <Skeleton className="col-span-6 row-span-6 h-[860px]" />
+      <Skeleton className="col-span-3 row-span-3 " />
+      <Skeleton className="col-span-3 row-span-3 " />
+    </div>
+  )
 }
 
 export default HomeLoading
