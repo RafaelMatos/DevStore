@@ -13,13 +13,20 @@ async function getFeaturedProducts(): Promise<Product[]> {
 
   return products
 }
+export function numberToPrice(price: number, fractional?: boolean) {
+  fractional = fractional || false
 
-export function numberToPrice(price: number) {
+  if (!fractional) {
+    return price.toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    })
+  }
   return price.toLocaleString('pt-BR', {
     style: 'currency',
     currency: 'BRL',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
   })
 }
 
