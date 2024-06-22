@@ -3,6 +3,7 @@ import React from 'react'
 import { numberToPrice } from '../../(home)/page'
 import { api } from '@/data/api'
 import { Product } from '@/data/types/product'
+import { Metadata } from 'next'
 
 interface ProductProps {
   params: {
@@ -19,6 +20,15 @@ async function getProduct(slug: string): Promise<Product> {
   const products = await response.json()
 
   return products
+}
+
+export async function generateMetadata({
+  params,
+}: ProductProps): Promise<Metadata> {
+  const product = await getProduct(params.slug)
+  return {
+    title: product.title,
+  }
 }
 
 export default async function ProductPage({ params }: ProductProps) {
